@@ -26,17 +26,15 @@ workflow:
               target: dev
               outputs:
                 dev:
-                  type: trino
-                  method: ldap
-                  user: kishanmahajan
-                  password: eyJ0b2tlbiI6IlRHVnVjM011WVRBek1ESmhNalF0WmprM01pMDBZVEppTFdGa1l6VXRZVE00Wm1FellqSm1abUU0IiwgImNsdXN0ZXIiOiJzeXN0ZW0ifQo=
-                  host: tcp.emerging-hawk.dataos.app
-                  database: icebase
-                  schema: dbttesting
-                  port: 7432
-                  threads: 1
+                  type: snowflake
+                  account: opofypc-ca62067.snowflakecomputing.com
+                  user: kishanm999
+                  password: Kishan@123
+                  database: airbnb
+                  warehouse: COMPUTE_WH
+                  role: ACCOUNT_ADMIN
           dbt_project:
-            name: 'dbt_trino'
+            name: 'dbtlearnnew'
             version: '1.0.0'
             config-version: 2
             model-paths: ["models"]
@@ -45,7 +43,7 @@ workflow:
             seed-paths: ["seeds"]
             macro-paths: ["macros"]
             snapshot-paths: ["snapshots"]
-            profile: 'dbt_trino'
+            profile: 'dbtlearnnew'
             models:
               dbt_trino:
                 +materialized: view
