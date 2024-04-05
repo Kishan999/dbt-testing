@@ -29,7 +29,7 @@ workflow:
                   type: trino
                   method: ldap
                   user: kishanmahajan
-                  password: c3VwZXJzZXQuZjJkNzcwZWItNDZjOS00ZTBkLWI1NzEtYTgyNWFmNTYwY2M0
+                  password: eyJ0b2tlbiI6IlRHVnVjM011WVRBek1ESmhNalF0WmprM01pMDBZVEppTFdGa1l6VXRZVE00Wm1FellqSm1abUU0IiwgImNsdXN0ZXIiOiJtaW5pdGhlbWlzIn0K
                   host: tcp.cheerful-maggot.dataos.app
                   database: icebase
                   schema: dbttesting
