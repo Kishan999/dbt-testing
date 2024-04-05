@@ -22,7 +22,7 @@ workflow:
         logLevel: DEBUG # WARNING, ERROR, DEBUG
         stackSpec:
           profiles:
-            dbt_trino:
+            dbtlearnnew:
               target: dev
               outputs:
                 dev:
@@ -30,9 +30,9 @@ workflow:
                   account: opofypc-ca62067.snowflakecomputing.com
                   user: kishanm999
                   password: Kishan@123
-                  database: airbnb
+                  database: AIRBNB
                   warehouse: COMPUTE_WH
-                  role: ACCOUNT_ADMIN
+                  role: ACCOUNTADMIN
           dbt_project:
             name: 'dbtlearnnew'
             version: '1.0.0'
@@ -45,7 +45,7 @@ workflow:
             snapshot-paths: ["snapshots"]
             profile: 'dbtlearnnew'
             models:
-              dbt_trino:
+              dbtlearnnew:
                 +materialized: view
                 dim:
                   +materialized: table
