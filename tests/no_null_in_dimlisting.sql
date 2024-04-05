@@ -1,0 +1,1 @@
+{{no_null_in_column( ref('dim_listing') )}}
