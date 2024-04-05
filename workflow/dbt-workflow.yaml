@@ -1,0 +1,58 @@
+name: dbt-workflow
+version: v1
+type: workflow
+tags:
+  - workflow
+description: DBT Sample Workflow
+workspace: public
+workflow:
+  dag:
+    - name: dbt-job-v2
+      title: dbt Sample Test Jobs
+      spec:
+        stack: dbt+python:1.0
+        compute: runnable-default
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 250Mi
+          limits:
+            cpu: 1000m
+            memory: 250Mi
+        logLevel: DEBUG # WARNING, ERROR, DEBUG
+        stackSpec:
+          profiles:
+            dbt_trino:
+              target: dev
+              outputs:
+                dev:
+                  type: trino
+                  method: ldap
+                  user: kishanmahajan
+                  password: c3VwZXJzZXQuZjJkNzcwZWItNDZjOS00ZTBkLWI1NzEtYTgyNWFmNTYwY2M0
+                  host: tcp.cheerful-maggot.dataos.app
+                  database: icebase
+                  schema: dbttesting
+                  port: 7432
+                  threads: 1
+          dbt_project:
+            name: 'dbt_trino'
+            version: '1.0.0'
+            config-version: 2
+            model-paths: ["models"]
+            analysis-paths: ["analyses"]
+            test-paths: ["tests"]
+            seed-paths: ["seeds"]
+            macro-paths: ["macros"]
+            snapshot-paths: ["snapshots"]
+            profile: 'dbt_trino'
+            models:
+              dbt_trino:
+                +materialized: view
+                dim:
+                  +materialized: table
+                src:
+                  +materialized: ephemeral
+          dbt_packages:
+            packages:
+              - git: "https://github.com/Kishan999/dbt-testing"
