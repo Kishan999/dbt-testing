@@ -14,7 +14,7 @@ snapshot-paths: ["snapshots"]
 
 
 models:
-  dbtlearnnew:
+  dbt_trino:
     +materialized: view
     dim:
       +materialized: table
